@@ -12,6 +12,8 @@ class Sketch : NSObject {
     // Change the
     var dx : Int
     
+    var random : Int
+    
     // This function runs once
     override init() {
         
@@ -23,6 +25,8 @@ class Sketch : NSObject {
         
         // Set the change value
         dx = 2
+        
+        random = random(from: 50, toButNotIncluding: 450)
         
     }
     
