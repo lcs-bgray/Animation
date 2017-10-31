@@ -12,7 +12,7 @@ class Sketch : NSObject {
     // Change the
     var dx : Int
     
-    var random : Int
+    var l : Int
     
     // This function runs once
     override init() {
@@ -21,12 +21,13 @@ class Sketch : NSObject {
         canvas = Canvas(width: 500, height: 500)
         
         // Set starting position
-        x = 250
+        x = random(from: 25, toButNotIncluding: 475)
         
         // Set the change value
         dx = 2
         
-        random = random(from: 50, toButNotIncluding: 450)
+        l = random(from: 25, toButNotIncluding: 475)
+
         
     }
     
@@ -39,13 +40,15 @@ class Sketch : NSObject {
         
         // Change position
         x += dx
+        l += dx
+        
         
         // Make the circle bounce on the right edge
-        if x > 475 { // start of the block
+        if l > 475 { // start of the block
             dx = -2 // move left
         } // end of the block
         
-        if x < 25 {
+        if l < 25 {
             dx = 2
         }
         
@@ -56,7 +59,7 @@ class Sketch : NSObject {
         
         // Draw an ellipse in the middle of the canvas
         canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
+        canvas.drawEllipse(centreX: l, centreY: l, width: 50, height: 50)
     }
     
 }
