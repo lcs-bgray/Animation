@@ -9,50 +9,37 @@ class Sketch : NSObject {
     // Position of circle
     var x : Int
     
-    // Change the
-    var dx : Int
+    var y : Int
+    
+    var a: Double
+    
+    var dx: Int
+    
+    var dy: Int
+    
     
     // This function runs once
     override init() {
         
-        // Create canvas object – specify size
+        // Create canvas
         canvas = Canvas(width: 500, height: 500)
         
         // Set starting position
-        x = 250
-        
-        // Set the change value
-        dx = 2
-        
+        x = 0
+        y = 0
+        a = 500/(250 * -250)
+        dy = 1
+        dx = 1
     }
     
-    // Runs in a loop, forever, to create the animated effect
+    // Draw cannon ball effect
     func draw() {
-        
-        // Clean up - draw a white rectangle over the entire canvas
-        canvas.fillColor = Color.white
-        canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 500, height: 500)
-        
-        // Change position
         x += dx
+        y = Int(a * Double(x) * (Double(x)-500))
         
-        // Make the circle bounce on the right edge
-        if x > 475 { // start of the block
-            dx = -2 // move left
-        } // end of the block
+        // Draw ellipse
+        canvas.drawEllipse(centreX: x, centreY: y, width: 50, height: 50)
         
-        if x < 25 {
-            dx = 2
-        }
-        
-        
-
-        
-        
-        
-        // Draw an ellipse in the middle of the canvas
-        canvas.fillColor = Color.black
-        canvas.drawEllipse(centreX: x, centreY: 250, width: 50, height: 50)
     }
     
 }
